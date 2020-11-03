@@ -4,8 +4,8 @@ namespace Day2InClass
 {
     class Student
     {
-        public string Name { get; private set; }
-        public string StudentNumber { get; private set; }
+        public string Name { get; set; }
+        public string StudentNumber { get; set; }
 
         public Student(string StudentNumber, string Name)
         {
@@ -26,7 +26,24 @@ namespace Day2InClass
             // create an instance of the Student Class
              Student stud1 = new Student(id, name);
 
-            Console.WriteLine("Student 1 is: " + stud1.StudentNumber + " " + stud1.Name);
+            Console.WriteLine("New Student: Number = " + stud1.StudentNumber + " Name = " + stud1.Name);           
+            Console.WriteLine("Are the above values correct? Y/N ");
+            string correct = Console.ReadLine();
+            
+            if(correct != "Y")
+            {
+                Console.WriteLine("Provide a student number.");
+                id = Console.ReadLine();
+
+                Console.WriteLine("Provide a student name.");
+                name = Console.ReadLine();
+
+                stud1.StudentNumber = id;
+                stud1.Name = name;
+
+                Console.WriteLine("New Student: Number = " + stud1.StudentNumber + " Name = " + stud1.Name);
+            }
+            Console.WriteLine("Thanks, student has been created");
             Console.Read();
         }
     }
