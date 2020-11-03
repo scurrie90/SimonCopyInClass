@@ -1,4 +1,5 @@
 ﻿using Day2InClass.Models;
+using Day2InClass.Services;
 using System;
 
 namespace Day2InClass
@@ -7,31 +8,20 @@ namespace Day2InClass
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Provide a student number.");
-            string id = Console.ReadLine();
+            Student stud1 = new Student();
+            stud1.GetValidStudentNumber();
+            stud1.GetValidName();
+            stud1.ShowStudentDetails();
+            
+            Printer.PromptValidation();
 
-            Console.WriteLine("Provide a student name.");
-            string name = Console.ReadLine();
-
-            // create an instance of the Student Class
-            Student stud1 = new Student(id, name);
-            Console.WriteLine("New Student: Number = " + stud1.StudentNumber + " Name = " + stud1.Name);
-            Console.WriteLine("Are the above values correct? Y/N ");
-            string correct = Console.ReadLine();
-
-            if (correct != "Y")
+            if (Console.ReadLine() != "Y")
             {
-                Console.WriteLine("Provide a student number.");
-                id = Console.ReadLine();
-
-                Console.WriteLine("Provide a student name.");
-                name = Console.ReadLine();
-
-                stud1.StudentNumber = id;
-                stud1.Name = name;
-                Console.WriteLine("New Student: Number = " + stud1.StudentNumber + " Name = " + stud1.Name);
+                stud1.GetValidStudentNumber();
+                stud1.GetValidName();
+                stud1.ShowStudentDetails();
             }
-            Console.WriteLine("Thanks, student has been created");
+            Printer.PrintConfirmation();
             Console.Read();
         }
     }
